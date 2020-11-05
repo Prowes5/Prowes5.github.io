@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>2020湖湘杯Reverse Writeup及复盘 | Prowes5&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="文章首发于安全客，https://www.anquanke.com/post/id/221283  前言 这次和happy_misc里的师傅一起报了湖湘杯，打了一天，总体感觉还算可以，虽然没进线下，但还是很感觉到自己一年中的提升和现在的不足的。re差一点儿ak，也就算是半个ak吧，嘻嘻。比赛嘛，一如既往的卷，就嗯卷。  0x00 easyre 这题放入IDA可以看到，在main中其实是没有关于f">
+  <meta name="description" content="文章首发于安全客，https://www.anquanke.com/post/id/221283">
 <meta name="keywords" content="CTF,网络安全">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2020湖湘杯Reverse Writeup及复盘">
 <meta property="og:url" content="http://yoursite.com/2020/11/05/2020湖湘杯Reverse-Writeup及复盘/index.html">
 <meta property="og:site_name" content="Prowes5&#39;s Blog">
-<meta property="og:description" content="文章首发于安全客，https://www.anquanke.com/post/id/221283  前言 这次和happy_misc里的师傅一起报了湖湘杯，打了一天，总体感觉还算可以，虽然没进线下，但还是很感觉到自己一年中的提升和现在的不足的。re差一点儿ak，也就算是半个ak吧，嘻嘻。比赛嘛，一如既往的卷，就嗯卷。  0x00 easyre 这题放入IDA可以看到，在main中其实是没有关于f">
+<meta property="og:description" content="文章首发于安全客，https://www.anquanke.com/post/id/221283">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://uploader.shimo.im/f/tZQ6C5rx4ILiSThu.png!thumbnail">
 <meta property="og:image" content="https://uploader.shimo.im/f/THNTk4WU43E78r6t.png!thumbnail">
@@ -23,10 +23,10 @@
 <meta property="og:image" content="https://uploader.shimo.im/f/iwwxDrZZZsfmNmuN.png!thumbnail">
 <meta property="og:image" content="https://uploader.shimo.im/f/MoYrW2dpKF5Eqei7.png!thumbnail">
 <meta property="og:image" content="https://uploader.shimo.im/f/piAUcnSbnLBXwkdL.png!thumbnail">
-<meta property="og:updated_time" content="2020-11-05T12:47:56.043Z">
+<meta property="og:updated_time" content="2020-11-05T12:54:16.309Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2020湖湘杯Reverse Writeup及复盘">
-<meta name="twitter:description" content="文章首发于安全客，https://www.anquanke.com/post/id/221283  前言 这次和happy_misc里的师傅一起报了湖湘杯，打了一天，总体感觉还算可以，虽然没进线下，但还是很感觉到自己一年中的提升和现在的不足的。re差一点儿ak，也就算是半个ak吧，嘻嘻。比赛嘛，一如既往的卷，就嗯卷。  0x00 easyre 这题放入IDA可以看到，在main中其实是没有关于f">
+<meta name="twitter:description" content="文章首发于安全客，https://www.anquanke.com/post/id/221283">
 <meta name="twitter:image" content="https://uploader.shimo.im/f/tZQ6C5rx4ILiSThu.png!thumbnail">
   
     <link rel="alternative" href="/atom.xml" title="Prowes5&#39;s Blog" type="application/atom+xml">
@@ -176,7 +176,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>文章首发于安全客，<a href="https://www.anquanke.com/post/id/221283" target="_blank" rel="noopener">https://www.anquanke.com/post/id/221283</a></p>
+<p>文章首发于安全客，<a href="https://www.anquanke.com/post/id/221283" target="_blank" rel="noopener">https://www.anquanke.com/post/id/221283</a><br><a id="more"></a></p>
 </blockquote>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
 <p>这次和happy_misc里的师傅一起报了湖湘杯，打了一天，总体感觉还算可以，虽然没进线下，但还是很感觉到自己一年中的提升和现在的不足的。re差一点儿ak，也就算是半个ak吧，嘻嘻。比赛嘛，一如既往的卷，就嗯卷。</p>
