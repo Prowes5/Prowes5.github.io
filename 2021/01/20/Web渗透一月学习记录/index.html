@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Prowes5&#39;s Blog">
 <meta property="og:description" content="这里做一下一月份学习Web相关的记录">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-01-20T14:51:07.646Z">
+<meta property="og:updated_time" content="2021-01-20T15:04:41.903Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Web渗透一月学习记录">
 <meta name="twitter:description" content="这里做一下一月份学习Web相关的记录">
@@ -251,6 +251,79 @@
 <p>php数组运算符<br>运算符|名称|例子|结果<br>–|–|–|–<br>+|联合|$x + $y|$x 和 $y 的联合（但不覆盖重复的键）<br>==|相等|$x == $y|如果 $x 和 $y 拥有相同的键/值对，则返回 true。<br>===|全等 |$x === $y|如果 $x 和 $y 拥有相同的键/值对，且顺序相同类型相同，则返回 true。<br>!=|不相等|$x != $y|如果$x 不等于$y,则返回true<br>&lt;&gt;|不相等|$x &lt;&gt; $y|如果$x 不等于$y,则返回true<br>!==|不全等|$x !== $y|如果$x与$y完全不相等，则返回true</p>
 <h3 id="php选择结构"><a href="#php选择结构" class="headerlink" title="php选择结构"></a>php选择结构</h3><p><strong>if语句</strong><br>和C差不多<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="attribute">xxx</span>==x) &#123;</span><br><span class="line">  xxxx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>if…else语句</strong><br>差不多<br><strong>if…elseif…else语句</strong><br>差不多，elseif中间没有空格<br><strong>switch…case语句</strong><br>差不多，可以判断字符串，C不行</p>
+<h3 id="php循环结构"><a href="#php循环结构" class="headerlink" title="php循环结构"></a>php循环结构</h3><p><strong>while循环</strong><br>差不多<br><strong>do…while</strong><br>差不多<br><strong>for语句</strong><br>差不多<br><strong>foreach语句</strong><br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">foreach</span> (<span class="variable">$array</span> as <span class="variable">$value</span>) &#123;</span><br><span class="line">  code</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>主要用于数组，可以将数组中的值提取，类似python的迭代器？</p>
+<h3 id="php函数"><a href="#php函数" class="headerlink" title="php函数"></a>php函数</h3><p>差不太多</p>
+<h3 id="php数组的相关函数"><a href="#php数组的相关函数" class="headerlink" title="php数组的相关函数"></a>php数组的相关函数</h3><table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>count()</td>
+<td>获取数组的长度</td>
+</tr>
+<tr>
+<td>sort()</td>
+<td>升序排序</td>
+</tr>
+<tr>
+<td>rsort()</td>
+<td>降序排序</td>
+</tr>
+<tr>
+<td>asort()</td>
+<td>根据值升序排序</td>
+</tr>
+<tr>
+<td>ksort()</td>
+<td>根据键升序排序</td>
+</tr>
+<tr>
+<td>arsort()</td>
+<td>根据值降序排序</td>
+</tr>
+<tr>
+<td>krsort()</td>
+<td>根据值降序排序</td>
+</tr>
+</tbody>
+</table>
+<h3 id="超全局变量"><a href="#超全局变量" class="headerlink" title="超全局变量"></a>超全局变量</h3><table>
+<thead>
+<tr>
+<th>定义</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$GLOBALS</td>
+<td>全局变量</td>
+</tr>
+<tr>
+<td>$_SERVER</td>
+<td>保存关于报头、路径和脚本位置的信息</td>
+</tr>
+<tr>
+<td>$_REQUEST</td>
+<td>收集HTML表单提交的数据</td>
+</tr>
+<tr>
+<td>$_POST</td>
+<td>POST表单</td>
+</tr>
+<tr>
+<td>$_GET</td>
+<td>GET表单</td>
+</tr>
+</tbody>
+</table>
+<p><strong>$_SERVER</strong><br>$_SERVER[‘PHP_SELF’]|返回当前执行脚本的文件名。<br>$_SERVER[‘GATEWAY_INTERFACE’]|返回服务器使用的 CGI 规范的版本。<br>$_SERVER[‘SERVER_ADDR’]|返回当前运行脚本所在的服务器的 IP 地址。<br>$_SERVER[‘SERVER_NAME’]|返回当前运行脚本所在的服务器的主机名（比如 <a href="http://www.w3school.com.cn）。" target="_blank" rel="noopener">www.w3school.com.cn）。</a><br>$_SERVER[‘SERVER_SOFTWARE’]|返回服务器标识字符串（比如 Apache/2.2.24）。<br>$_SERVER[‘SERVER_PROTOCOL’]|返回请求页面时通信协议的名称和版本（例如，“HTTP/1.0”）。<br>$_SERVER[‘REQUEST_METHOD’]|返回访问页面使用的请求方法（例如 POST）。<br>$_SERVER[‘REQUEST_TIME’]|返回请求开始时的时间戳（例如 1577687494）。<br>$_SERVER[‘QUERY_STRING’]|返回查询字符串，如果是通过查询字符串访问此页面。<br>$_SERVER[‘HTTP_ACCEPT’]|返回来自当前请求的请求头。<br>$_SERVER[‘HTTP_ACCEPT_CHARSET’]|返回来自当前请求的 Accept_Charset 头（ 例如 utf-8,ISO-8859-1）<br>$_SERVER[‘HTTP_HOST’]|返回来自当前请求的 Host 头。<br>$_SERVER[‘HTTP_REFERER’]|返回当前页面的完整 URL（不可靠，因为不是所有用户代理都支持）。<br>$_SERVER[‘HTTPS’]|是否通过安全 HTTP 协议查询脚本。<br>$_SERVER[‘REMOTE_ADDR’]|返回浏览当前页面的用户的 IP 地址。<br>$_SERVER[‘REMOTE_HOST’]|返回浏览当前页面的用户的主机名。<br>$_SERVER[‘REMOTE_PORT’]|返回用户机器上连接到 Web 服务器所使用的端口号。<br>$_SERVER[‘SCRIPT_FILENAME’]|返回当前执行脚本的绝对路径。<br>$_SERVER[‘SERVER_ADMIN’]|该值指明了 Apache 服务器配置文件中的 SERVER_ADMIN 参数。<br>$_SERVER[‘SERVER_PORT’]|Web 服务器使用的端口。默认值为 “80”。<br>$_SERVER[‘SERVER_SIGNATURE’]|返回服务器版本和虚拟主机名。<br>$_SERVER[‘PATH_TRANSLATED’]|当前脚本所在文件系统（非文档根目录）的基本路径。<br>$_SERVER[‘SCRIPT_NAME’]|返回当前脚本的路径。<br>$_SERVER[‘SCRIPT_URI’]|返回当前页面的 URI。</p>
+<h2 id="PHP表单"><a href="#PHP表单" class="headerlink" title="PHP表单"></a>PHP表单</h2><p>GET、POST</p>
 
       
 
@@ -386,7 +459,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2021-01-20"><span class="toc-number">1.</span> <span class="toc-text">2021.01.20</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#语言基础"><span class="toc-number">1.1.</span> <span class="toc-text">语言基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#变量"><span class="toc-number">1.1.1.</span> <span class="toc-text">变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出"><span class="toc-number">1.1.2.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据类型"><span class="toc-number">1.1.3.</span> <span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一些常规的关于字符串的函数"><span class="toc-number">1.1.4.</span> <span class="toc-text">一些常规的关于字符串的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php常量宏定义"><span class="toc-number">1.1.5.</span> <span class="toc-text">php常量宏定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php运算符"><span class="toc-number">1.1.6.</span> <span class="toc-text">php运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php选择结构"><span class="toc-number">1.1.7.</span> <span class="toc-text">php选择结构</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2021-01-20"><span class="toc-number">1.</span> <span class="toc-text">2021.01.20</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#语言基础"><span class="toc-number">1.1.</span> <span class="toc-text">语言基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#变量"><span class="toc-number">1.1.1.</span> <span class="toc-text">变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出"><span class="toc-number">1.1.2.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据类型"><span class="toc-number">1.1.3.</span> <span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一些常规的关于字符串的函数"><span class="toc-number">1.1.4.</span> <span class="toc-text">一些常规的关于字符串的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php常量宏定义"><span class="toc-number">1.1.5.</span> <span class="toc-text">php常量宏定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php运算符"><span class="toc-number">1.1.6.</span> <span class="toc-text">php运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php选择结构"><span class="toc-number">1.1.7.</span> <span class="toc-text">php选择结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php循环结构"><span class="toc-number">1.1.8.</span> <span class="toc-text">php循环结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php函数"><span class="toc-number">1.1.9.</span> <span class="toc-text">php函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php数组的相关函数"><span class="toc-number">1.1.10.</span> <span class="toc-text">php数组的相关函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#超全局变量"><span class="toc-number">1.1.11.</span> <span class="toc-text">超全局变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP表单"><span class="toc-number">1.2.</span> <span class="toc-text">PHP表单</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
