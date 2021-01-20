@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Prowes5&#39;s Blog">
 <meta property="og:description" content="这里做一下一月份学习Web相关的记录">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-01-20T14:35:20.020Z">
+<meta property="og:updated_time" content="2021-01-20T14:51:07.646Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Web渗透一月学习记录">
 <meta name="twitter:description" content="这里做一下一月份学习Web相关的记录">
@@ -205,7 +205,52 @@
 </tr>
 </tbody>
 </table>
-<h3 id="php常量宏定义"><a href="#php常量宏定义" class="headerlink" title="php常量宏定义"></a>php常量宏定义</h3><p>define函数，常量是自动全局的。第三个参数为true时，为大小写敏感。否则为大小写不敏感。</p>
+<h3 id="php常量宏定义"><a href="#php常量宏定义" class="headerlink" title="php常量宏定义"></a>php常量宏定义</h3><p>define函数，常量是自动全局的。第三个参数为true时，为大小写敏感。否则为大小写不敏感。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php">    define(<span class="string">"DEF"</span>, <span class="string">"test"</span>, <span class="keyword">true</span>);</span></span><br><span class="line"><span class="php">    <span class="keyword">echo</span> DEF;</span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php">    define(<span class="string">"DEF"</span>, <span class="string">"test"</span>, <span class="keyword">true</span>);</span></span><br><span class="line"><span class="php">    <span class="keyword">echo</span> def;</span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<h3 id="php运算符"><a href="#php运算符" class="headerlink" title="php运算符"></a>php运算符</h3><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>名称</th>
+<th>例子</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>==</td>
+<td>等于</td>
+<td>$x == $y</td>
+<td>如果 $x 等于 $y，则返回 true。（类型可以不同）</td>
+</tr>
+<tr>
+<td>===</td>
+<td>全等</td>
+<td>$x === $y</td>
+<td>如果 $x 等于 $y，且它们类型相同，则返回 true。</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>不等于</td>
+<td>$x != $y</td>
+<td>如果 $x 不等于 $y，则返回 true。（不算类型）</td>
+</tr>
+<tr>
+<td>&lt;&gt;</td>
+<td>不等于</td>
+<td>$x &lt;&gt; $y</td>
+<td>如果 $x 不等于 $y，则返回 true。</td>
+</tr>
+<tr>
+<td>!==</td>
+<td>不全等</td>
+<td>$x !== $y</td>
+<td>如果 $x 不等于 $y，或它们类型不相同，返回True</td>
+</tr>
+</tbody>
+</table>
+<p>php数组运算符<br>运算符|名称|例子|结果<br>–|–|–|–<br>+|联合|$x + $y|$x 和 $y 的联合（但不覆盖重复的键）<br>==|相等|$x == $y|如果 $x 和 $y 拥有相同的键/值对，则返回 true。<br>===|全等 |$x === $y|如果 $x 和 $y 拥有相同的键/值对，且顺序相同类型相同，则返回 true。<br>!=|不相等|$x != $y|如果$x 不等于$y,则返回true<br>&lt;&gt;|不相等|$x &lt;&gt; $y|如果$x 不等于$y,则返回true<br>!==|不全等|$x !== $y|如果$x与$y完全不相等，则返回true</p>
+<h3 id="php选择结构"><a href="#php选择结构" class="headerlink" title="php选择结构"></a>php选择结构</h3><p><strong>if语句</strong><br>和C差不多<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="attribute">xxx</span>==x) &#123;</span><br><span class="line">  xxxx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>if…else语句</strong><br>差不多<br><strong>if…elseif…else语句</strong><br>差不多，elseif中间没有空格<br><strong>switch…case语句</strong><br>差不多，可以判断字符串，C不行</p>
 
       
 
@@ -341,7 +386,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2021-01-20"><span class="toc-number">1.</span> <span class="toc-text">2021.01.20</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#语言基础"><span class="toc-number">1.1.</span> <span class="toc-text">语言基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#变量"><span class="toc-number">1.1.1.</span> <span class="toc-text">变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出"><span class="toc-number">1.1.2.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据类型"><span class="toc-number">1.1.3.</span> <span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一些常规的关于字符串的函数"><span class="toc-number">1.1.4.</span> <span class="toc-text">一些常规的关于字符串的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php常量宏定义"><span class="toc-number">1.1.5.</span> <span class="toc-text">php常量宏定义</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2021-01-20"><span class="toc-number">1.</span> <span class="toc-text">2021.01.20</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#语言基础"><span class="toc-number">1.1.</span> <span class="toc-text">语言基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#变量"><span class="toc-number">1.1.1.</span> <span class="toc-text">变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出"><span class="toc-number">1.1.2.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据类型"><span class="toc-number">1.1.3.</span> <span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一些常规的关于字符串的函数"><span class="toc-number">1.1.4.</span> <span class="toc-text">一些常规的关于字符串的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php常量宏定义"><span class="toc-number">1.1.5.</span> <span class="toc-text">php常量宏定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php运算符"><span class="toc-number">1.1.6.</span> <span class="toc-text">php运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php选择结构"><span class="toc-number">1.1.7.</span> <span class="toc-text">php选择结构</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
