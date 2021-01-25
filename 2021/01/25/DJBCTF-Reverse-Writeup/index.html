@@ -6,15 +6,31 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/6 | Prowes5&#39;s Blog</title>
+  <title>DJBCTF Reverse Writeup | Prowes5&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Prowes5&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2019/06/index.html">
+  <meta name="description" content="这次比赛只做了四道题，差一点儿就能拿到水杯了，难受，被师傅们乱杀。在此复盘一下。">
+<meta name="keywords" content="CTF,网络安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DJBCTF Reverse Writeup">
+<meta property="og:url" content="http://yoursite.com/2021/01/25/DJBCTF-Reverse-Writeup/index.html">
 <meta property="og:site_name" content="Prowes5&#39;s Blog">
+<meta property="og:description" content="这次比赛只做了四道题，差一点儿就能拿到水杯了，难受，被师傅们乱杀。在此复盘一下。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://s3.ax1x.com/2021/01/25/sOrKPS.jpg">
+<meta property="og:image" content="https://s3.ax1x.com/2021/01/25/sOr8rn.png">
+<meta property="og:image" content="https://s3.ax1x.com/2021/01/25/sOrGbq.png">
+<meta property="og:image" content="https://s3.ax1x.com/2021/01/25/sOrtaV.png">
+<meta property="og:image" content="https://s3.ax1x.com/2021/01/25/sOraPU.png">
+<meta property="og:image" content="https://s3.ax1x.com/2021/01/25/sOrw24.png">
+<meta property="og:image" content="https://s3.ax1x.com/2021/01/25/sOrDM9.png">
+<meta property="og:image" content="https://s3.ax1x.com/2021/01/25/sOrrrR.png">
+<meta property="og:image" content="https://s3.ax1x.com/2021/01/25/sOrca6.png">
+<meta property="og:image" content="https://s3.ax1x.com/2021/01/25/sOrgIK.png">
+<meta property="og:updated_time" content="2021-01-25T15:03:40.537Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Prowes5&#39;s Blog">
+<meta name="twitter:title" content="DJBCTF Reverse Writeup">
+<meta name="twitter:description" content="这次比赛只做了四道题，差一点儿就能拿到水杯了，难受，被师傅们乱杀。在此复盘一下。">
+<meta name="twitter:image" content="https://s3.ax1x.com/2021/01/25/sOrKPS.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Prowes5&#39;s Blog" type="application/atom+xml">
   
@@ -142,71 +158,228 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-DJBCTF-Reverse-Writeup" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/16/常见问题/" class="archive-article-date">
-  	<time datetime="2019-06-16T11:50:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/16/常见问题/">常见问题</a>
+    <h1 class="article-title" itemprop="name">
+      DJBCTF Reverse Writeup
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2021/01/25/DJBCTF-Reverse-Writeup/" class="archive-article-date">
+  	<time datetime="2021-01-25T14:55:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>这次比赛只做了四道题，差一点儿就能拿到水杯了，难受，被师傅们乱杀。在此复盘一下。<br><a id="more"></a></p>
+</blockquote>
+<h1 id="0x00-A-Maze-in"><a href="#0x00-A-Maze-in" class="headerlink" title="0x00 A-Maze-in"></a>0x00 A-Maze-in</h1><p>直接给出关键代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"> v3 = 3;</span><br><span class="line">  v4 = 0;</span><br><span class="line">  if ( strlen(v12) != 34 )</span><br><span class="line">    goto LABEL_22;</span><br><span class="line">  v5 = 0;</span><br><span class="line">  do</span><br><span class="line">  &#123;</span><br><span class="line">    v6 = v12[v5];</span><br><span class="line">    switch ( v6 )</span><br><span class="line">    &#123;</span><br><span class="line">      case &apos;U&apos;:</span><br><span class="line">        v7 = v4;</span><br><span class="line">        if ( byte_404018[4 * (v3 + 8 * v4)] != 1 )</span><br><span class="line">          goto LABEL_22;</span><br><span class="line">        --v4;</span><br><span class="line">        break;</span><br><span class="line">      case &apos;D&apos;:</span><br><span class="line">        v7 = v4;</span><br><span class="line">        if ( byte_404019[4 * (v3 + 8 * v4)] != 1 )</span><br><span class="line">          goto LABEL_22;</span><br><span class="line">        ++v4;</span><br><span class="line">        break;</span><br><span class="line">      case &apos;L&apos;:</span><br><span class="line">        v7 = v4;</span><br><span class="line">        if ( byte_40401A[4 * (v3 + 8 * v4)] != 1 )</span><br><span class="line">          goto LABEL_22;</span><br><span class="line">        --v3;</span><br><span class="line">        break;</span><br><span class="line">      case &apos;R&apos;:</span><br><span class="line">        v7 = v4;</span><br><span class="line">        if ( byte_40401B[4 * (v3 + 8 * v4)] != 1 )</span><br><span class="line">          goto LABEL_22;</span><br><span class="line">        ++v3;</span><br><span class="line">        break;</span><br><span class="line">      default:</span><br><span class="line">        goto LABEL_22;</span><br><span class="line">    &#125;</span><br><span class="line">    ++v5;</span><br><span class="line">  &#125;</span><br><span class="line">  while ( v5 &lt; 34 );</span><br><span class="line">  if ( v3 != 4 || v4 != 7 )</span><br><span class="line">  &#123;</span><br><span class="line">LABEL_22:</span><br><span class="line">    sub_401020(&quot;You&apos;re stuck!\n&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到主要是一个4<em>8</em>8的三维迷宫，可以看到大概是这个样子的，初始位置为i=3，j=0，k=2。<br><img src="https://s3.ax1x.com/2021/01/25/sOrKPS.jpg" alt="图片"></p>
+<p>先看下最低一层，题目要求是从最底层到最高层。起始i为3，j为0，这一列为1011。首先在执行之前会检查当前位置元素是否为0，所以不可能为第二个。第一个元素位置操作为向下移动，由于在最底层，所以不可能继续向下移动，所以只存在初始位置k为2或3两种可能。这里比较抽象的地方是每次移动一列都可以选，所以需要考虑多种情况根据位置一一排除，其实最好的方式是从终点反推。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">0, 1, 0, 1, </span><br><span class="line">0, 1, 1, 1, </span><br><span class="line">0, 0, 1, 1, </span><br><span class="line">1, 0, 1, 1, </span><br><span class="line">0, 1, 1, 0,</span><br><span class="line">0, 1, 0, 1, </span><br><span class="line">0, 1, 1, 0, </span><br><span class="line">0, 1, 0, 0,</span><br></pre></td></tr></table></figure>
+<p>得到路径为LLDRRDLLLDRDLDDDRRULURRULURRDDDLDR，远程输入就可以得到flag。</p>
+<h1 id="0x01-Matara-Okina"><a href="#0x01-Matara-Okina" class="headerlink" title="0x01 Matara Okina"></a>0x01 Matara Okina</h1><p>这题当时没出，是看师傅们的wp才出的。原因是自己的jadx版本太落后了。。。</p>
+<p>用新版的jadx打开可以看到主类里边没有什么有用的东西。看Flag这个类就可以看到一些不一样的东西。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public void onCreate(Bundle bundle) &#123;</span><br><span class="line">        super.onCreate(bundle);</span><br><span class="line">        setContentView(R.layout.activity_flag);</span><br><span class="line">        Uri data = getIntent().getData();</span><br><span class="line">        TextView textView = (TextView) findViewById(R.id.result);</span><br><span class="line">        String scheme = data.getScheme();</span><br><span class="line">        String host = data.getHost();</span><br><span class="line">        if (scheme.toLowerCase() == scheme &amp;&amp; host.toLowerCase() == host) &#123;</span><br><span class="line">            String queryParameter = data.getQueryParameter(&quot;secret&quot;);</span><br><span class="line">            if (queryParameter == null) &#123;</span><br><span class="line">                textView.setText(&quot;NO&quot;);</span><br><span class="line">                return;</span><br><span class="line">            &#125;</span><br><span class="line">            byte[] bytes = queryParameter.getBytes();</span><br><span class="line">            int i = 0;</span><br><span class="line">            while (i &lt; (bytes.length + 1) / 2) &#123;</span><br><span class="line">                int i2 = i + 1;</span><br><span class="line">                bytes[i] = (byte) (bytes[i] ^ i2);</span><br><span class="line">                int length = (bytes.length - 1) - i;</span><br><span class="line">                bytes[length] = (byte) (bytes[length] ^ i2);</span><br><span class="line">                i = i2;</span><br><span class="line">            &#125;</span><br><span class="line">            if (Arrays.equals(this.ans, bytes)) &#123;</span><br><span class="line">                textView.setText(Check(data.toString()));</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                textView.setText(&quot;NO&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            textView.setText(&quot;NO&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>ans为<code>@lgvjocWzihodmXov[EWO</code>，从<code>getScheme</code>可以查到scheme是一种页面跳转协议。从而在不同的APP之间跳转。<br>而在AndroidManifest中就可以看到具体的设置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity android:label=&quot;@string/title_activity_flag&quot; android:name=&quot;show.zxc.mataraokina.FlagActivity&quot; android:launchMode=&quot;singleTask&quot; android:screenOrientation=&quot;portrait&quot;&gt;</span><br><span class="line">            &lt;intent-filter&gt;</span><br><span class="line">                &lt;data android:scheme=&quot;sh0w&quot; android:host=&quot;p4th&quot; android:path=&quot;/70/1nput&quot;/&gt;</span><br><span class="line">                &lt;category android:name=&quot;android.intent.category.DEFAULT&quot;/&gt;</span><br><span class="line">                &lt;action android:name=&quot;android.intent.action.VIEW&quot;/&gt;</span><br><span class="line">                &lt;category android:name=&quot;android.intent.category.BROWSABLE&quot;/&gt;</span><br><span class="line">            &lt;/intent-filter&gt;</span><br><span class="line">        &lt;/activity&gt;</span><br></pre></td></tr></table></figure>
+<p>那现在的重点就是如何构造URL得到flag，协议为sh0w，host为p4th，路径为/70/1nput，参数值secret为ans异或之后的。这个解密就不写脚本了，没必要，真 有手就行。所以最后的URL为sh0w://p4th/70/1nput?secret=Android_scheme_is_FUN。<br>构造一个a标签用手机打开就可以得到flag。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;sh0w://p4th/70/1nput?secret=Android_scheme_is_FUN&quot;&gt;test&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="0x02-UnrealFlag"><a href="#0x02-UnrealFlag" class="headerlink" title="0x02 UnrealFlag"></a>0x02 UnrealFlag</h1><p>明天更新，还没复盘完，是的，我是懒🐶</p>
+<h1 id="0x03-anniu"><a href="#0x03-anniu" class="headerlink" title="0x03 anniu"></a>0x03 anniu</h1><p>MFC程序，直接用spy4win修改button属性就可以得到flag。</p>
+<h1 id="0x04-warmup"><a href="#0x04-warmup" class="headerlink" title="0x04 warmup"></a>0x04 warmup</h1><p>关键代码，可以看到要求输入的长度为48，且要求输入为hex字符。</p>
+<p><img src="https://s3.ax1x.com/2021/01/25/sOr8rn.png" alt="图片"></p>
+<p>比较关键的函数是<code>sub_125e</code>和<code>sub_14e0</code></p>
+<p>sub_125e函数为将位置为0xff的元素替换为输入的字符，这里解释了为什么要求输入hex字符，会将hex转为对应的数字，比如a转为0xa。</p>
+<p><img src="https://s3.ax1x.com/2021/01/25/sOrGbq.png" alt="图片"></p>
+<p>sub_14e0为check函数，看到会检查每行每列是否有重复元素，这时候就很明显了，就是16*16的数独。</p>
+<p><img src="https://s3.ax1x.com/2021/01/25/sOrtaV.png" alt="图片"></p>
+<p>dump出来数独表。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">8, e,  , c, 9, d,  , 1, a, f, 3, b, 0, 2,  , 4,</span><br><span class="line">1, 6, 3, 2, 5, a, 7, 0, 8, 9,  , 4, f, e, b, d, </span><br><span class="line">a, 0,  , d, 4, f, 3, b, 7, 5, e, 2, 6, 8, c, 1, </span><br><span class="line">4, b, 5, f,  , 2,  , c, 6, d, 1, 0,  , a, 3, 9, </span><br><span class="line">2, a,  , 3, d, 0, b, 5, c,  , 9, 1,  , f, 7, e, </span><br><span class="line">d, 7, c, b, f, e, a, 8, 0,  , 5, 3, 9, 6, 1, 2, </span><br><span class="line"> , 1, f,  , c, 9, 4, 6, 2, e, d,  ,  , 3, a,  , </span><br><span class="line">9, 4, 6, e, 2, 7, 1, 3, b, 8, a, f, 5,  , 0, c, </span><br><span class="line"> , 3, a, 7, e, 8, c, 4, 9,  , 0, d, 2,  , 6,  , </span><br><span class="line">c, 9, 1,  , b, 3, f, d, e, a,  ,  , 8, 0, 4, 7, </span><br><span class="line">6, d, 0, 8, a, 1, 2,  ,  , 7, 4, 5, c, b,  , f, </span><br><span class="line">b, 2, e,  , 0,  , 5,  , f, 1,  , c, a, 9, d, 3, </span><br><span class="line"> , f, b,  , 3, c,  , e, 5,  ,  , 9,  , 4, 8, a, </span><br><span class="line">e, 8,  ,  , 7, 5, d, f, 4, 3,  ,  , 1, c, 9, 0, </span><br><span class="line"> , 5, d, 9, 6, 4, 8, a, 1, c, f, e,  , 7, 2, b, </span><br><span class="line">3,  , 4, a,  , b, 9, 2, d, 0,  , 8, e,  , f, 6</span><br></pre></td></tr></table></figure>
+<p>找个求解工具就可以得到了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">8, e, 7, c, 9, d, 6, 1, a, f, 3, b, 0, 2, 5, 4,</span><br><span class="line">1, 6, 3, 2, 5, a, 7, 0, 8, 9, c, 4, f, e, b, d, </span><br><span class="line">a, 0, 9, d, 4, f, 3, b, 7, 5, e, 2, 6, 8, c, 1, </span><br><span class="line">4, b, 5, f, 8, 2, e, c, 6, d, 1, 0, 7, a, 3, 9, </span><br><span class="line">2, a, 8, 3, d, 0, b, 5, c, 6, 9, 1, 4, f, 7, e, </span><br><span class="line">d, 7, c, b, f, e, a, 8, 0, 4, 5, 3, 9, 6, 1, 2, </span><br><span class="line">5, 1, f, 0, c, 9, 4, 6, 2, e, d, 7, b, 3, a, 8, </span><br><span class="line">9, 4, 6, e, 2, 7, 1, 3, b, 8, a, f, 5, d, 0, c, </span><br><span class="line">f, 3, a, 7, e, 8, c, 4, 9, b, 0, d, 2, 1, 6, 5, </span><br><span class="line">c, 9, 1, 5, b, 3, f, d, e, a, 2, 6, 8, 0, 4, 7, </span><br><span class="line">6, d, 0, 8, a, 1, 2, 9, 3, 7, 4, 5, c, b, e, f, </span><br><span class="line">b, 2, e, 4, 0, 6, 5, 7, f, 1, 8, c, a, 9, d, 3, </span><br><span class="line">7, f, b, 1, 3, c, 0, e, 5, 2, 6, 9, d, 4, 8, a, </span><br><span class="line">e, 8, 2, 6, 7, 5, d, f, 4, 3, b, a, 1, c, 9, 0, </span><br><span class="line">0, 5, d, 9, 6, 4, 8, a, 1, c, f, e, 3, 7, 2, b, </span><br><span class="line">3, c, 4, a, 1, b, 9, 2, d, 0, 7, 8, e, 5, f, 6</span><br></pre></td></tr></table></figure></p>
+<p>组合得到flag，765c98e78644507b8dfb1552693e467871026d26ba03c175</p>
+<h1 id="0x05-e"><a href="#0x05-e" class="headerlink" title="0x05 e"></a>0x05 e</h1><p>这题居然是e写的，我拿了一血居然不知道，赛后才有师傅和我说是e。不过感觉和C没啥区别，老套路，IDA+gdb一把梭。</p>
+<p>题目给了两个文件一个bin，一个so。</p>
+<p>bin文件中的代码，看上去只是对so的一个调用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// write access to const memory has been detected, the output may be wrong!</span><br><span class="line">int __cdecl __noreturn main(int argc, const char **argv, const char **envp)</span><br><span class="line">&#123;</span><br><span class="line">  void *v3; // ebx</span><br><span class="line">  void (__cdecl *v4)(int, int, const char **, int); // esi</span><br><span class="line">  v3 = dlopen(&quot;./krnln.so&quot;, 1);</span><br><span class="line">  if ( !v3 )</span><br><span class="line">    v3 = dlopen(&quot;krnln.so&quot;, 1);</span><br><span class="line">  if ( !v3 )</span><br><span class="line">  &#123;</span><br><span class="line">    fputs(&quot;Can&apos;t load the library \&quot;krnln.so\&quot;!\r\n&quot;, stderr);</span><br><span class="line">    exit(-1);</span><br><span class="line">  &#125;</span><br><span class="line">  v4 = dlsym(v3, &quot;RunPrg&quot;);</span><br><span class="line">  if ( !v4 || dlerror() )</span><br><span class="line">  &#123;</span><br><span class="line">    fputs(&quot;Can&apos;t locate \&quot;RunPrg\&quot; function!\r\n&quot;, stderr);</span><br><span class="line">    exit(-1);</span><br><span class="line">  &#125;</span><br><span class="line">  pEData = 0x804A078;</span><br><span class="line">  v4(pEData, argc, argv, pEData);</span><br><span class="line">  dlclose(v3);</span><br><span class="line">  exit(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但在so中的RunPrg函数却是这样的，最后有一个jmp eax，是sub_3690函数的返回值，但这个函数的逻辑很乱。这时就不得不用gdb了。<br><img src="https://s3.ax1x.com/2021/01/25/sOraPU.png" alt="图片"></p>
+<p>一开始我也是直接gdb调跟着走，但跟着跟着就会很乱，而且找不到输入的地方。这时候想到了attach，我们直接用gdb attach上去。</p>
+<p><img src="https://s3.ax1x.com/2021/01/25/sOrw24.png" alt="图片"></p>
+<p>逐渐从底层finish上来，发现是调用了fgets函数，那么就去so中找fgets。</p>
+<p><img src="https://s3.ax1x.com/2021/01/25/sOrDM9.png" alt="图片"></p>
+<p>可以找到这个地方，会计算输入的长度，做了什么操作，然后进行了内存拷贝。重点是在这个dword数组中。继续向下调试，可以跟到这里。</p>
+<p><img src="https://s3.ax1x.com/2021/01/25/sOrrrR.png" alt="图片"></p>
+<p>根据eax的值找到sub_27BC函数，代码太长这里不放了，可以看到当传参为0x7e8时，会malloc一个堆快，之后memcpy将对应的数据拷贝进去。</p>
+<p>之后继续跟进，直到跟进到这个位置。栈顶存放着我的输入，凭经验就知道是关键函数，可能是check或者加密什么的。</p>
+<p><img src="https://s3.ax1x.com/2021/01/25/sOrca6.png" alt="图片"></p>
+<p>步入进去，找到了比较的地方。</p>
+<p><img src="https://s3.ax1x.com/2021/01/25/sOrgIK.png" alt="图片"></p>
+<p>这题其实是六个题中最简单的一个了，重点就是耐心和逆向的经验了。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>首先感谢各位出题和运维的师傅们了，这次比赛的难度不是很难但总归还是能学到不少东西，就是有些可惜我太菜，只出了四道离水杯只差一步。</p>
+
+      
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">技术分享</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CTF</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络安全</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/日常学习//" class="article-tag-list-link color5">日常学习</a>
+        			<a href="/categories/writeup//" class="article-tag-list-link color3">writeup</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/writeup/Reverse//" class="article-tag-list-link color3">Reverse</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2021/01/25/DJBCTF-Reverse-Writeup/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2021/01/20/Web渗透一月学习记录/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Web渗透一月学习记录</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00-A-Maze-in"><span class="toc-number">1.</span> <span class="toc-text">0x00 A-Maze-in</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-Matara-Okina"><span class="toc-number">2.</span> <span class="toc-text">0x01 Matara Okina</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x02-UnrealFlag"><span class="toc-number">3.</span> <span class="toc-text">0x02 UnrealFlag</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x03-anniu"><span class="toc-number">4.</span> <span class="toc-text">0x03 anniu</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x04-warmup"><span class="toc-number">5.</span> <span class="toc-text">0x04 warmup</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x05-e"><span class="toc-number">6.</span> <span class="toc-text">0x05 e</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">7.</span> <span class="toc-text">总结</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -229,8 +402,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
